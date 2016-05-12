@@ -3,6 +3,7 @@ package com.test.animator;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void imgClick(View view) {
         Toast.makeText(this, "imgClicked", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, FloatBtnActivity.class));
     }
 
     public void btnClick(View view) {
