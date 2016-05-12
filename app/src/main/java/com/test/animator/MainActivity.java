@@ -3,6 +3,7 @@ package com.test.animator;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,6 +38,19 @@ public class MainActivity extends AppCompatActivity {
     public void imgClick(View view) {
         Toast.makeText(this, "imgClicked", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, FloatBtnActivity.class));
+    }
+
+    public void timeClick(final View view) {
+        ValueAnimator animator = ValueAnimator.ofInt(10, 0);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                int v = (int) valueAnimator.getAnimatedValue();
+                ((Button) view).setText("" + v);
+            }
+        });
+        animator.setDuration(10000);
+        animator.start();
     }
 
     public void btnClick(View view) {
